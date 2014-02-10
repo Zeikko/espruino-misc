@@ -20,14 +20,10 @@ function pwm(led, brightness, frequency) {
   }, 1000/frequency);
 }
 
-var intervals2 = [];
 /**
 * Changes brightness between 0.1 to 1 with 0.1 intervals with determined interval.
 */
 function wave(led, time) {
-  if ((typeof intervals2[led]) !== "undefined") {
-    clearInterval(intervals2[led]);
-  }
   var brightness = 0.1,
       change = 0.1;
   setInterval(function() {
@@ -46,4 +42,4 @@ wave(LED1, 20);
 //Start the red led when the blue led is on the highest intensity
 setTimeout(function() {
 wave(LED3, 20);
-}, 300);
+}, 200);
