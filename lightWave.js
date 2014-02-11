@@ -1,7 +1,6 @@
 /**
  * Pulse wave modulated light wave
  * Blinks red, green and blue LEDs each in a turn.
- * @FIXME Keeps throwing Unkown Interval ERRORS. Can't figure out why. Can you?
  */
 var intervals = [];
 /**
@@ -14,6 +13,7 @@ var intervals = [];
 function pwm(led, brightness, frequency) {
   if ((typeof intervals[led]) !== "undefined") {
     clearInterval(intervals[led]);
+    intervals[led] = undefined;
     led.reset();
   }
   if(brightness > 0) {
@@ -57,9 +57,8 @@ function blink() {
   } else {
     activeLed = LED1;
   }
-  wave(activeLed, 50);
-  setTimeout(blink, 800);
+  wave(activeLed, 12.5);
+  setTimeout(blink, 200);
  }
 
 blink();
-
